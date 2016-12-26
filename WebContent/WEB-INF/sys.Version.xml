@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="xconfig"         class="java.util.ArrayList" />
+	<import name="versions"        class="java.util.ArrayList" />
+	<import name="version"         class="org.hy.log.model.Version" />
+	
+	
+	
+	<!-- 系统版本信息 -->
+	<xconfig>
+		
+	    <versions id="Versions">
+	    
+	    	<version>
+	            <name>1.0</name>
+				<value>2014-12-12</value>
+				<comment>
+				     统一日志服务的项目搭建
+				     支持数据库记录日志。
+				     支持普通日志记录。
+				     支持注意类型的日志记录(包括年、月、日、旬、周、天、小时)。
+				</comment>
+				<dbVersion>1.0</dbVersion>
+	        </version>
+	        
+	        
+	        <version>
+	            <name>1.1</name>
+				<value>2016-02-24</value>
+				<comment>
+				     添加：容灾机制。可防止突然停电等原因，造成消息队列中正在等待入库的日志消息的丢失。
+				     添加：消息的系统级鉴权功能。即，每个客户端系统拥有一个密钥，只有验证通过后才有权访问接口（所有的接口）。
+				     添加：消息的接口级鉴权功能。即，每个客户端系统拥有多个密钥，每个接口一个密钥，只有验证通过后才有权访问对应的接口。
+				</comment>
+				<dbVersion>1.0</dbVersion>
+	        </version>
+	        
+		</versions>
+		
+	</xconfig>
+	
+</config>

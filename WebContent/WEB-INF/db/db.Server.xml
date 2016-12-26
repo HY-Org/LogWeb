@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="sqls"            class="java.util.ArrayList" />
+	<import name="sql"             class="org.hy.common.xml.XSQL" />
+
+
+
+    <!-- 公共模块的相关SQL -->
+	<sqls>
+
+		<!-- 万能SQL配置  -->
+		<sql id="XSQL_God">
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					:SQL
+				]]>
+			</content>
+			
+		</sql>
+		
+		
+		<!-- 查询数据库表的元数据信息 -->
+		<sql id="XSQL_DBTableInfo_Query">
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content if="ORACLE == DataSourceType.getValue">
+				<![CDATA[
+					SELECT  A.Table_Name  AS TableName
+					  FROM  User_Tables   A
+					 ORDER  BY A.Table_Name
+				]]>
+			</content>
+			
+			<content if="MYSQL == DataSourceType.getValue">
+				<![CDATA[
+					SELECT  A.Table_Name AS TableName
+                      FROM  INFORMATION_SCHEMA.Tables  A
+                     ORDER  BY A.Table_Name
+				]]>
+			</content>
+			
+			<content if="SQLSERVER == DataSourceType.getValue">
+				<![CDATA[
+					SELECT  A.Name AS TableName
+                      FROM  SysObjects  A
+                     WHERE  A.XType = 'U' 
+                     ORDER  BY A.Name
+				]]>
+			</content>
+			
+			<content if="DB2 == DataSourceType.getValue">
+				<![CDATA[
+					SELECT  A.TabName AS TableName
+                      FROM  SysCat.Tables  A
+                     WHERE  A.TabSchema = Current Schema 
+                     ORDER  BY A.TabName
+				]]>
+			</content>
+			
+			<result>
+				<table>java.util.Hashtable</table>
+				<fill>put(row.tableName ,row)</fill>
+				<row>org.hy.log.model.DBTableInfo</row>
+				<cfill>setter(colValue)</cfill>
+			</result>
+			
+		</sql>
+		
+		
+		
+		<!-- 查询数据库表的元数据信息 -->
+		<sql id="XSQL_DBTableInfo_QueryByName">
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content if="ORACLE == DataSourceType.getValue">
+				<![CDATA[
+					SELECT  A.Table_Name  AS TableName
+					  FROM  User_Tables   A
+					 WHERE  UPPER(A.Table_Name) = UPPER(':tableName')
+				]]>
+			</content>
+			
+			<content if="MYSQL == DataSourceType.getValue">
+				<![CDATA[
+					SELECT  A.Table_Name AS TableName
+                      FROM  INFORMATION_SCHEMA.Tables  A
+                     WHERE  UPPER(A.Table_Name) = UPPER(':tableName')
+				]]>
+			</content>
+			
+			<content if="SQLSERVER == DataSourceType.getValue">
+				<![CDATA[
+					SELECT  A.Name AS TableName
+                      FROM  SysObjects  A
+                     WHERE  A.XType       = 'U' 
+                       AND  UPPER(A.Name) = UPPER(':tableName')
+				]]>
+			</content>
+			
+			<content if="DB2 == DataSourceType.getValue">
+				<![CDATA[
+					SELECT  A.TabName AS TableName
+                      FROM  SysCat.Tables  A
+                     WHERE  A.TabSchema      = Current Schema 
+                       AND  UPPER(A.TabName) = UPPER(':tableName')
+				]]>
+			</content>
+			
+			<result>
+				<row>org.hy.log.model.DBTableInfo</row>
+				<cfill>setter(colValue)</cfill>
+			</result>
+			
+		</sql>
+		
+		
+		
+		<!-- 查询密钥：接口级粒度 -->
+		<sql id="XSQL_MessageKey_Query_SSID">
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					SELECT  A.sysid
+					       ,A.sid
+					       ,A.msgKey
+					  FROM  TMessageKey  A
+					 WHERE  A.sysid IS NOT NULL
+					   AND  A.sid   IS NOT NULL
+					 ORDER  BY A.sysid 
+					          ,A.sid
+				]]>
+			</content>
+			
+			<result>
+				<table>org.hy.common.TablePartitionRID</table>
+				<fill>putRow(row.sysid ,row.sid ,row.msgKey)</fill>
+				<row>org.hy.log.model.MessageKey</row>
+				<cfill>setter(colValue)</cfill>
+			</result>
+			
+		</sql>
+		
+		
+		
+		<!-- 查询密钥：系统级粒度 -->
+		<sql id="XSQL_MessageKey_Query_SysID">
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					SELECT  A.sysid
+					       ,A.msgKey
+					  FROM  TMessageKey  A
+					 WHERE  A.sysid IS NOT NULL
+					   AND  A.sid   IS NULL
+					 ORDER  BY A.sysid 
+				]]>
+			</content>
+			
+			<result>
+				<table>java.util.HashMap</table>
+				<fill>put(row.sysid ,row.msgKey)</fill>
+				<row>org.hy.log.model.MessageKey</row>
+				<cfill>setter(colValue)</cfill>
+			</result>
+			
+		</sql>
+		
+	</sqls>
+	
+</config>

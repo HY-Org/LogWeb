@@ -1,0 +1,10 @@
+<beans>
+
+  <service xmlns="http://xfire.codehaus.org/config/1.0">
+    <name>TestService</name>
+    <namespace>http://www.hy.com/TestService</namespace>
+    <serviceClass>org.hy.log.appInterfaces.ITestService</serviceClass>
+    <implementationClass>org.hy.log.appInterfaces.webservice.TestServiceImpl</implementationClass>
+  </service>
+  
+</beans>

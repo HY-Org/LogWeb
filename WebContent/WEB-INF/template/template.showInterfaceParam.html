@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+ 
+<title>日志系统-接口:IFType参数</title>
+<style type="text/css"> 
+
+.userInfoModify_logininfobody{ width:1020px;margin:0 auto;margin-top:10px;}
+.userInfoModify_logininfo{ width:970px;margin:0 auto;margin-left:30px;}
+.userInfoModify_logininfo1{ width:970px;margin:0 auto;margin-left:30px;}
+.userInfoModify_labeTag,.userInfoModify_inputTag,.userInfoModify_checkTag{float:left; height:30px; line-height:30px; font-weight:bold;font-family:"微软雅黑";   font-size:14px;background-color:#D5DDF6;}
+.userInfoModify_labeTag1,.userInfoModify_inputTag1,.userInfoModify_checkTag1{float:left; height:30px; line-height:30px;font-family:"微软雅黑";   font-size:12px;}
+.userInfoModify_labeTag2,.userInfoModify_inputTag2,.userInfoModify_checkTag2{float:left; height:30px; line-height:30px;font-family:"微软雅黑";   font-size:12px;border:#97B0F8 solid 0px;}
+.userInfoModify_clearTag {clear:both;height:36px;margin-top:0px;} 
+.userInfoModify_clearTag1 {clear:both;height:36px;margin-top:0px;} 
+.userInfoModify_clearTag2 {clear:both;height:35px;margin-top:0px;} 
+.userInfoModify_labeTag { width:50px;text-align:center;border:#97B0F8 solid 1px;  } 
+.userInfoModify_inputTag{ width:200px; vertical-align:middle;text-align:center;border-top: #97B0F8 solid 1px;border-bottom: #97B0F8 solid 1px;}  
+.userInfoModify_checkTag{ width:710px; text-align:center;border:#97B0F8 solid 1px;} 
+.userInfoModify_labeTag1 { width:50px;text-align:center; border:#97B0F8 solid 1px; } 
+.userInfoModify_inputTag1{ width:200px; vertical-align:middle;text-align:center;border-top: #97B0F8 solid 1px;border-bottom: #97B0F8 solid 1px;}  
+.userInfoModify_checkTag1{ width:710px; text-align:left;border:#97B0F8 solid 1px;} 
+.cont_show{ width:680px; margin-left:10px;white-space:nowrap;overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis; }
+
+.userInfoModify_labeTag2 { width:50px;text-align:center;  } 
+.userInfoModify_inputTag2{ width:200px; vertical-align:middle;text-align:center;}  
+.userInfoModify_checkTag2{ width:710px; text-align:left;} 
+</style>
+<script type="text/javascript" src="../../jsoneditor-3.1.2/jquery.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="../../jsoneditor-3.1.2/app-min.css"></link>
+<link rel="stylesheet" type="text/css" href="../../jsoneditor-3.1.2/jsoneditor.min.css"></link>
+<script type="text/javascript" src="../../jsoneditor-3.1.2/jsoneditor.min.js"></script>
+<script type="text/javascript" src="../../jsoneditor-3.1.2/ace.js"></script>
+<script type="text/javascript" src="../../jsoneditor-3.1.2/app-min.js"></script>
+
+<script type="text/javascript">
+
+	function v_Tittle()
+	{
+		$(".poweredBy").html("接口:IFType参数");
+	}
+    
+    
+</script>
+<body onload="v_Tittle();">
+
+ 
+ 
+ 
+
+<div id="auto" style="height: 80%;">
+<div>
+	<div id="title_info" class="pull-left" style="margin-top:-20px;">
+		 <input id="clear"         type="hidden" />
+		 <input id="menuOpenFile"  type="hidden" />
+		 <input id="menuOpenUrl"   type="hidden" />
+	     <input id="save"          type="hidden" />
+	     :InterfaceTitle
+	</div>
+	
+</div>
+  <div id="contents" >
+    <div id="codeEditor"></div>
+	 <input id="splitter"   type="hidden" />
+	 <input id="buttons"    type="hidden" /> 
+	 <input id="toTree"     type="hidden" />   
+	 <input id="toCode"     type="hidden" />   
+     <input id="drag"       type="hidden" />  
+     <input id="treeEditor" type="hidden" />   
+    <script type="text/javascript"> 
+	var e = :Content;
+      app.load(e);
+      app.resize();
+    </script>
+ 
+  </div>
+</div>
+
+<div class="userInfoModify_logininfobody">
+		<div class="userInfoModify_logininfo"> 
+	      <div class="userInfoModify_clearTag">
+	            <div class="userInfoModify_labeTag">编号</div>
+	            <div class="userInfoModify_inputTag">错误编号</div>
+	            <div class="userInfoModify_checkTag">错误描述</div>
+	      </div> 
+		 
+	   </div>  
+	   
+	   <div class="userInfoModify_logininfo1">  
+	     	 :ErrorContent
+	     	 
+	     	<div class="userInfoModify_clearTag1">
+		            <div class="userInfoModify_labeTag2"></div>
+		            <div class="userInfoModify_inputTag2"> 
+					</div>
+		            <div class="userInfoModify_checkTag2" > 
+					</div> 
+	     	</div> 
+	   		
+	   </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$('.compact').tooltip({
+		placement:'right',
+		trigger:'hover'
+	});
+	$('.format').tooltip({
+		placement:'right',
+		trigger:'hover'
+	});
+	$('a[data-toggle=tooltip]').mouseover(function() {
+	 	$(this).tooltip('show');
+	});
+});
+</script>
+</body>
+</html>

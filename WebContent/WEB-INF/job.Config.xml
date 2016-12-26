@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="xconfig"         class="java.util.ArrayList" />
+	<import name="job"             class="org.hy.common.thread.Job" />
+	<import name="jobs"            class="org.hy.common.thread.Jobs" />
+	
+	
+	
+	<!-- 任务配置信息 -->
+	<xconfig>
+		
+	    <job id="JOB_TaskCreateTable">
+	    	<code>JOB_TaskCreateTable</code>
+	    	<name>注册者的：创建日志表任务</name>
+	    	<intervalType ref="this.$IntervalType_Minute"/>
+	    	<intervalLen>19</intervalLen>
+	    	<startTime>2014-01-01 00:00:00</startTime>
+	    	<xjavaID>LogRegisterDAO</xjavaID>
+	    	<methodName>taskCreateTable</methodName>
+	    </job>
+	    
+	    
+	    <job id="JOB_CacheMessageKey">
+	    	<code>JOB_CacheMessageKey</code>
+	    	<name>缓存消息密钥</name>
+	    	<intervalType ref="this.$IntervalType_Day"/>
+	    	<intervalLen>1</intervalLen>
+	    	<startTime>2016-01-01 01:00:00</startTime>
+	    	<xjavaID>MessageKeyDAO</xjavaID>
+	    	<methodName>cacheMessageKeys</methodName>
+	    	<!-- 初始化是否立即执行 -->
+	    	<initExecute>true</initExecute>
+	    </job>
+	    
+	    
+	    <job id="JOB_MailTime_Scan">
+	    	<code>JOB_MailTime_Scan</code>
+	    	<name>邮件服务</name>
+	    	<intervalType ref="this.$IntervalType_Minute"/>
+	    	<intervalLen>1</intervalLen>
+	    	<startTime>2016-01-01 00:00:00</startTime>
+	    	<xjavaID>MailTimeDAO</xjavaID>
+	    	<methodName>scanMails</methodName>
+	    	<initExecute>true</initExecute>
+	    </job>
+	    
+			    
+	    
+	    <jobs id="JOBS" this="JOBS">
+	    	<addJob ref="JOB_CacheMessageKey" />
+	    	<addJob ref="JOB_TaskCreateTable" if="IsTimeTaskServer.getValue" />
+	    	<call name="startup" />
+	    </jobs>
+		
+	</xconfig>
+	
+</config>

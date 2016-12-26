@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="sqls"            class="java.util.ArrayList" />
+	<import name="sqlGroup"        class="org.hy.common.xml.plugins.XSQLGroup" />
+	<import name="sqlNode"         class="org.hy.common.xml.plugins.XSQLNode" />
+	<import name="sql"             class="org.hy.common.xml.XSQL" />
+
+
+
+	<!-- 邮件模块相关SQL -->
+	<sqls>
+	
+		<!-- 邮件任务01: 查询是否有要发送的邮件 -->
+		<sql id="XSQL_MailTime_Step01_Query"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content if="MYSQL == DataSourceType.getValue">
+				<![CDATA[
+					SELECT  A.ID
+					       ,A.Title
+					       ,A.Content
+					       ,A.Reciver
+						   ,A.SendTime
+					  FROM  TMailTime  A
+					 WHERE  A.SendTime <= Now()
+				]]>
+			</content>
+			
+			<content if="SQLSERVER == DataSourceType.getValue">
+				<![CDATA[
+					SELECT  A.ID
+					       ,A.Title
+					       ,A.Content
+					       ,A.Reciver
+						   ,A.SendTime
+					  FROM  TMailTime  A
+					 WHERE  A.SendTime <= GetDate()
+				]]>
+			</content>
+			
+			<result>
+				<row>java.util.HashMap</row>
+				<cfill>put(colName ,colValue)</cfill>
+			</result>
+			
+		</sql>
+		
+		
+		<!-- 邮件任务03: 发送邮件成功后，删除记录 -->
+		<sql id="XSQL_MailTime_Step03_Delete"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					DELETE
+					  FROM  TMailTime
+					 WHERE  ID = ':ID'
+				]]>
+			</content>
+			
+		</sql>
+		
+		
+		
+		<!-- 邮件任务 -->
+		<sqlGroup id="GXSQL_MailTime">
+			<sqlNode>
+				<sql  ref="XSQL_MailTime_Step01_Query" />
+				<type ref="this.$Type_Query" />
+			</sqlNode>
+			
+			<sqlNode>
+				<type ref="this.$Type_ExecuteJava" />
+				<xjavaID>MailTimeDAO</xjavaID>
+	    		<methodName>sendMail</methodName>
+			</sqlNode>
+		
+			<sqlNode>
+				<sql  ref="XSQL_MailTime_Step03_Delete" />
+				<type ref="this.$Type_ExecuteUpdate" />
+			</sqlNode>
+			
+		</sqlGroup>
+		
+	</sqls>
+	
+</config>

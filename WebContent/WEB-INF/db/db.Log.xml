@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="sqls"            class="java.util.ArrayList" />
+	<import name="sql"             class="org.hy.common.xml.XSQL" />
+
+
+
+    <!-- 日志模块的相关SQL -->
+	<sqls>
+
+		<!-- 非注册者的：新增操作日志信息 -->
+		<sql id="XSQL_LogInfo_Add"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					INSERT  INTO TLog
+					       (
+					        id
+                           ,sysID
+                           ,logID
+                           ,logType
+                           ,logClass
+                           ,logContent
+                           ,logInfo
+                           ,operatorNo
+                           ,operationType
+                           ,operationRemark
+                           ,operationTime
+                           ,waitTime
+                           )
+                    VALUES (
+					        ':id'
+                           ,':sysID'
+                           ,':logID'
+                           ,':logType'
+                           ,':logClass'
+                           ,':logContent'
+                           ,':logInfo'
+                           ,':operatorNo'
+                           ,':operationType'
+                           ,':operationRemark'
+                           ,':operationTime'
+                           ,':waitTime'
+                           )
+				]]>
+			</content>
+			
+		</sql>
+		
+		
+		
+		<!-- 注册者的：新增操作日志信息 -->
+		<sql id="XSQL_LogInfo_Register_Add"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					INSERT  INTO TLog_:sysID
+					       (
+					        id
+                           ,logID
+                           ,logType
+                           ,logClass
+                           ,logContent
+                           ,logInfo
+                           ,operatorNo
+                           ,operationType
+                           ,operationRemark
+                           ,operationTime
+                           ,waitTime
+                           )
+                    VALUES (
+					        ':id'
+                           ,':logID'
+                           ,':logType'
+                           ,':logClass'
+                           ,':logContent'
+                           ,':logInfo'
+                           ,':operatorNo'
+                           ,':operationType'
+                           ,':operationRemark'
+                           ,':operationTime'
+                           ,':waitTime'
+                           )
+				]]>
+			</content>
+			
+		</sql>
+		
+		
+		
+		<!-- 注册者的：创建日志表(1/3) -->
+		<sql id="XSQL_LogInfo_Register_Create"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					CREATE TABLE TLog_:sysID
+					(
+					  id                           VARCHAR(64)        NOT NULL
+					 ,logID                        VARCHAR(64)
+					 ,logType                      VARCHAR(1000)
+					 ,logClass                     VARCHAR(1000)
+					 ,logContent                   TEXT
+					 ,logInfo                      TEXT
+					 ,operatorNo                   VARCHAR(64)
+					 ,operationType                VARCHAR(64)
+					 ,operationRemark              VARCHAR(1000)
+					 ,operationTime                DATETIME          NOT NULL 
+					 ,waitTime                     INT               NOT NULL
+					 ,PRIMARY KEY (id)
+					)
+				]]>
+			</content>
+			
+		</sql>
+		
+		
+		
+		<!-- 注册者的：创建日志表(2/3)，创建索引 -->
+		<sql id="XSQL_LogInfo_Register_Create_CIndexByLogID"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content if="MYSQL == DataSourceType.getValue">
+				<![CDATA[
+					ALTER TABLE TLog_:sysID ADD INDEX (logID)
+				]]>
+			</content>
+			
+			<content if="SQLSERVER == DataSourceType.getValue">
+				<![CDATA[
+					CREATE NONCLUSTERED INDEX IX_TLog_LogID_:sysID ON TLog_:sysID (logID);
+				]]>
+			</content>
+			
+		</sql>
+		
+		
+		
+		<!-- 注册者的：创建日志表(3/3)，创建索引 -->
+		<sql id="XSQL_LogInfo_Register_Create_CIndexByOperationTime"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content if="MYSQL == DataSourceType.getValue">
+				<![CDATA[
+					ALTER TABLE TLog_:sysID ADD INDEX (operationTime)
+				]]>
+			</content>
+			
+			<content if="SQLSERVER == DataSourceType.getValue">
+				<![CDATA[
+					CREATE NONCLUSTERED INDEX IX_TLog_OperationTime_:sysID ON TLog_:sysID (operationTime);
+				]]>
+			</content>
+			
+		</sql>
+		
+		
+		
+		<!-- 注册者的：注册配置信息 -->
+		<sql id="XSQL_LogInfo_Register_Config_Add"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					INSERT  INTO TLogRegister
+					       (
+					        sysID
+                           ,registerType
+                           ,createTime
+                           )
+                    VALUES (
+					        ':sysID'
+                           ,':registerType'
+                           ,':createTime'
+                           )
+				]]>
+			</content>
+			
+		</sql>
+		
+		
+		
+		<!-- 注册者的：更新配置信息 -->
+		<sql id="XSQL_LogInfo_Register_Config_Update"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					UPDATE  TLogRegister
+					   SET  registerType = ':registerType'
+					       ,dbBuildTime  = null
+					       ,updateTime   = ':updateTime'
+					 WHERE  sysID        = ':sysID'
+				]]>
+			</content>
+			
+		</sql>
+		
+		
+		
+		<!-- 注册者的：更新配置信息 -->
+		<sql id="XSQL_LogInfo_Register_Build"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					UPDATE  TLogRegister
+					   SET  dbBuildTime  = ':dbBuildTime'
+					 WHERE  sysID        = ':sysID'
+				]]>
+			</content>
+			
+		</sql>
+		
+		
+		
+		<!-- 注册者的：查询配置信息 -->
+		<sql id="XSQL_LogInfo_Register_QueryByID"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					SELECT  A.sysID
+						   ,A.registerType	
+						   ,A.dbBuildTime
+						   ,A.createTime
+						   ,A.updateTime
+					  FROM  TLogRegister  A 
+					 WHERE  A.sysID = ':sysID'
+				]]>
+			</content>
+			
+			<result>
+				<row>org.hy.log.model.LogRegister</row>
+				<cfill>setter(colValue)</cfill>
+			</result>
+			
+		</sql>
+		
+		
+		
+		<!-- 注册者的：查询所有配置信息 -->
+		<sql id="XSQL_LogInfo_Register_QueryAll"> 
+		
+			<dataSourceGroup ref="DSG_LogWeb" />
+			
+			<content>
+				<![CDATA[
+					SELECT  A.sysID
+						   ,A.registerType	
+						   ,A.dbBuildTime
+						   ,A.createTime
+						   ,A.updateTime
+					  FROM  TLogRegister  A
+				]]>
+			</content>
+			
+			<result>
+				<table>java.util.Hashtable</table>
+				<fill>put(row.sysID ,row)</fill>
+				<row>org.hy.log.model.LogRegister</row>
+				<cfill>setter(colValue)</cfill>
+			</result>
+			
+		</sql>
+		
+	</sqls>
+	
+</config>

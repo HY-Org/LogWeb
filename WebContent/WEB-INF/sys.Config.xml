@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="xconfig"         class="java.util.ArrayList" />
+	<import name="xparam"          class="java.util.Hashtable" />
+	<import name="item"            class="org.hy.common.app.Param" />
+	
+	
+	
+	<!-- 系统配置参数信息 -->
+	<xconfig>
+		
+	    <xparam id="SYSParam" key="name">
+	    
+	    	<item id="APPWEBID">
+	            <name>APPWEBID</name>
+				<value>LogWeb</value>
+				<comment>部署Web服务所在主机的标示(建议只包含：数字和英文)</comment>
+	        </item>
+	    
+	    	<item id="RootPackageName">
+	            <name>RootPackageName</name>
+				<value>org.hy.log</value>
+				<comment>顶级包的路径。用于初始化。一般不修改</comment>
+	        </item>
+			
+			<item id="DataSourceType">
+	            <name>DataSourceType</name>
+				<value>MYSQL</value>
+				<comment>配置数据库是什么类型的。目前支持有：MYSQL、SQLSERVER</comment>
+	        </item>
+	        
+			<item id="MsgPWD">
+				<name>MsgPWD</name>
+				<value></value>
+				<comment>与服务端间发消息的加密密码(暂时为空，不启用)</comment>
+			</item>
+			
+			<item id="SYS_LANGUAGE">
+	            <name>SYS_LANGUAGE</name>
+				<value>cn</value>
+				<comment>统一设置国际化语言版本</comment>
+	        </item>
+	        
+	        <item id="TPool_MaxThread">
+	            <name>TPool_MaxThread</name>
+				<value>10</value>
+				<comment>最大线程数</comment>
+	        </item>
+	        
+	        <item id="TPool_MinThread">
+	            <name>TPool_MinThread</name>
+				<value>1</value>
+				<comment>最小线程数</comment>
+	        </item>
+	        
+	        <item id="TPool_MinIdleThread">
+	            <name>TPool_MinIdleThread</name>
+				<value>1</value>
+				<comment>最小空闲数</comment>
+	        </item>
+	        
+	        <item id="TPool_IntervalTime">
+	            <name>TPool_IntervalTime</name>
+				<value>50</value>
+				<comment>间隔时间</comment>
+	        </item>
+	        
+	        <item id="TPool_IdleTimeKill">
+	            <name>TPool_IdleTimeKill</name>
+				<value>600</value>
+				<comment>空闲自毁时长</comment>
+	        </item>
+	        
+	        <item id="CacheType">
+	            <name>CacheType</name>
+				<value>NULL</value>
+				<comment>高性能缓存的类型。目前支持类型有：REDIS、NULL(不启用缓存)</comment>
+	        </item>
+	        
+	        <item id="IsSynchronized">
+	            <name>IsSynchronized</name>
+				<value>false</value>
+				<comment>性能类参数。当为false时，部分访问量大的接口启用异步访问机制</comment>
+	        </item>
+	        
+	        <item id="IsSafeData">
+	            <name>IsSafeData</name>
+				<value>true</value>
+				<comment>
+				数据安全及性能类参数。在IsSynchronized=false时才有效。
+				当为true时，牺牲部分性能保证日志数据的安全性，即使在数据库断连时，也确保日志数据能被记录下来而不丢失。
+				当为false时，性能损失将是最少的。
+				</comment>
+	        </item>
+	        
+	        <item id="IsTimeTaskServer">
+	            <name>IsTimeTaskServer</name>
+				<value>true</value>
+				<comment>是否为(启用)定时任务服务器</comment>
+	        </item>
+	        
+	        <item id="Digit">
+	            <name>Digit</name>
+				<value>3</value>
+				<comment>四舍五入保留的小数位数</comment>
+	        </item>
+	        
+	        <item id="AppInterfaceSysHead">
+	            <name>AppInterfaceSysHead</name>
+				<value>
+					<![CDATA[
+                    {
+                        "sysid" :"系统编号。请求发起方标示。区分大小写。最大长度:16英文",
+                        "sid" :"接口编号。区分大小写",
+                        "sidv" :"接口版本。区分大小写",
+                        "sign" :"数字签名",
+                        "tokenSec" :"令牌",
+                        "encry" :"参数的加密类型",
+                        "format" :"指定响应格式",
+                        "session" :"分配给用户的SessionKey，通过登陆授权获取",
+                        "serialNo" :"消息流水号。每次访问消息唯一的标识",
+                        "body": :BODY
+					}
+					]]>
+				</value>
+				<comment>系统级请求参数Json字符串样式</comment>
+	        </item>
+	        
+	        <item id="AppInterfaceSysHeadReturn">
+	            <name>AppInterfaceSysHeadReturn</name>
+				<value>
+					<![CDATA[
+                    {
+                        "sysid" :"系统编号。请求发起方标示",
+                        "sid" :"接口编号",
+                        "sidv" :"接口版本",
+                        "sign" :"数字签名",
+                        "tokenSec" :"令牌",
+                        "encry" :"参数的加密类型",
+                        "format" :"指定响应格式",
+                        "session" :"分配给用户的SessionKey，通过登陆授权获取",
+                        "serialNo" :"消息流水号。每次访问消息唯一的标识",
+                        "rc": "返回错误编号。0表示正常",
+                        "result": "返回执行是否异常。正常时为true，异常时为false",
+                        "body": :BODY
+					}
+					]]>
+				</value>
+				<comment>系统级请求参数Json字符串样式(接口返回时用)</comment>
+	        </item>
+	        
+	        <item id="ErrorLogCacheSize">
+	            <name>ErrorLogCacheSize</name>
+				<value>100</value>
+				<comment>记录错误信息的缓存大小</comment>
+	        </item>
+	        
+		</xparam>
+		
+	</xconfig>
+	
+</config>

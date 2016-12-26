@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rest-client version="3.4.2"><request><http-version>1.1</http-version><http-follow-redirects/><URL>http://127.0.0.1:8080/LogWeb/services/log/log</URL><method>POST</method><body><string content-type="text/plain" charset="UTF-8">{
+  "sysid": "SYS_LogWeb",
+  "sidv": "1.0",
+  "body": {
+    "logID": "日志编号。由外部调用系统传递，当然也可以为空",
+    "logType": "日志分组类型",
+    "logContent": "日志内容",
+    "operatorNo": "操作人编号",
+    "operationType": "操作类型。如，添加、删除、修改、查询等",
+    "operationRemark": "操作备注"
+  }
+}</string></body></request></rest-client>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+  	<display-name>Log Web Application</display-name>
+  	<!-- 区分项目名称,防止默认重名 -->
+  	<context-param>
+  		<param-name>webAppRootKey</param-name>
+  		<param-value>LogWeb</param-value>
+  	</context-param>
+  	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:xml/spring/applicationContext.xml</param-value>
+	</context-param>
+  	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<!-- 开发环境 -->
+		<param-value>classpath:properties/development/log4j.properties</param-value>
+		<!-- 生产环境 -->
+		<!-- <param-value>classpath:properties/production/log4j.properties</param-value> -->
+		<!-- 测试环境 -->
+		<!-- <param-value>classpath:properties/testing/log4j.properties</param-value> -->
+	</context-param>
+	
+	<!-- Eureka 监听器 ZhengWei(HY) Add 2016-10-14 -->
+	<!-- 
+	<listener>  
+        <listener-class>org.hy.log.common.ServerListener</listener-class>  
+    </listener>
+    -->  
+  	
+  	<!-- Spring的log4j监听器 -->
+  	<listener>
+  		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  	</listener>
+  	
+  	<!-- Spring 启动	-->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- 系统初始化信息 ZhengWei(HY) Add 2014-09-12 -->
+	<listener>
+		<listener-class>org.hy.log.common.InitConfig</listener-class>
+	</listener>
+  	
+	<!-- 统一编码过虑器	-->
+	<filter>
+		<filter-name>SetCharacterEncoding</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SetCharacterEncoding</filter-name>
+		<url-pattern>*.ihtml</url-pattern>
+	</filter-mapping>
+  	
+  	<servlet>
+  		<servlet-name>mvcDispatcher</servlet-name>
+  		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:xml/spring/dispatcher-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>mvcDispatcher</servlet-name>
+  		<url-pattern>*.ihtml</url-pattern>
+  	</servlet-mapping>
+  	
+  	
+  	<!-- Restfull配置 ZhengWei(HY) Add 2014-09-23 -->
+	<servlet>
+		<servlet-name>JerseyServlet</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>org.hy.log.common.ApplicationRestfuls</param-value>
+        </init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JerseyServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+  	
+  	
+  	<!-- XFire配置 ZhengWei(HY) Add 2014-09-12 -->
+	<servlet>
+	  <servlet-name>XFireServlet</servlet-name>
+	  <servlet-class>
+	      org.codehaus.xfire.transport.http.XFireConfigurableServlet
+	  </servlet-class>
+	</servlet>
+	
+	
+	<servlet>
+		<servlet-name>AnalyseObjectServlet</servlet-name>
+		<servlet-class>org.hy.common.xml.plugins.analyse.AnalyseObjectServlet</servlet-class>
+		<init-param>
+            <param-name>password</param-name>
+            <param-value>C4E2939F3A7BB7D771F113025300C47C</param-value>
+        </init-param>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>AnalyseObjectServlet</servlet-name>
+    	<url-pattern>/analyses/analyseObject</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AnalyseServerServlet</servlet-name>
+		<servlet-class>org.hy.common.xml.plugins.analyse.AnalyseServerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>AnalyseServerServlet</servlet-name>
+    	<url-pattern>/analyses/analyseDB</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MessageListener</servlet-name>
+		<servlet-class>org.hy.log.appInterfaces.servlet.MessageListener</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>MessageListener</servlet-name>
+    	<url-pattern>/messageListener</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MessageServlet</servlet-name>
+		<servlet-class>org.hy.log.appInterfaces.servlet.MessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>MessageServlet</servlet-name>
+    	<url-pattern>/message</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+	  <servlet-name>XFireServlet</servlet-name>
+	  <url-pattern>/servlet/XFireServlet/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	  <servlet-name>XFireServlet</servlet-name>
+	  <url-pattern>/xfire/*</url-pattern>
+	</servlet-mapping>
+
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+  	
+</web-app>

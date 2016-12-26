@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="xconfig"         class="java.util.ArrayList" />
+	<import name="startupConfig"   class="java.util.ArrayList" />
+	<import name="item"            class="org.hy.common.app.Param" />
+	
+	
+	
+	<!-- 启动加载XML配置信息的列表 -->
+	<xconfig>
+		
+	    <startupConfig id="StartupConfig">
+	    
+	    	<item>
+				<value>sys.DB.Config.xml</value>
+			</item>
+	    
+	    	<item>
+	    		<value>db/db.Berkeley.xml</value>
+	    	</item>
+	    	
+			<item>
+				<value>db/db.Server.xml</value>
+			</item>
+	    
+			<item>
+				<value>db/db.Log.xml</value>
+			</item>
+			
+			<item>
+				<value>db/db.MailTime.xml</value>
+			</item>
+			
+			
+			
+			<item>
+	    		<value>sys.Version.xml</value>
+	    	</item>
+	    	
+	    	<!-- 加载api目录下的所有配置文件 -->
+			<item>
+				<value>api/</value>
+			</item>
+			
+		</startupConfig>
+		
+	</xconfig>
+	
+</config>

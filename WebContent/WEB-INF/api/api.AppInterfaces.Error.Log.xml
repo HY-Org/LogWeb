@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="xconfig"         class="java.util.ArrayList" />
+	<import name="I18N"            class="org.hy.common.I18N" />
+	<import name="iText"           class="org.hy.common.app.Param" />
+	<import name="errors"          class="java.util.Hashtable" />
+	<import name="error"           class="org.hy.log.msg.MsgErrorResponse" />
+	
+	
+	
+	<!-- 日志模块相关的接口错误 -->
+	<xconfig>
+	
+		<!-- 初始化国际化语言信息：中文 -->
+		<I18N id="I18N_Error" this="I18N_Error">
+			<language>cn</language>
+			
+			<iText>
+				<name>130101A001</name>
+				<value>记录日志：消息体为空或消息体格式异常</value>
+			</iText>
+			
+			<iText>
+				<name>130101A011</name>
+				<value>记录日志：[系统编号]不可为空</value>
+			</iText>
+			
+			<iText>
+				<name>130101A021</name>
+				<value>记录日志：[系统编号]超过最大长度:15</value>
+			</iText>
+			
+			<iText>
+				<name>130101A031</name>
+				<value>记录日志：[系统编号]不能包含汉字</value>
+			</iText>
+			
+			<iText>
+				<name>130101A041</name>
+				<value>记录日志：[系统编号]只能由英文、数字(0~9)和下划线组成</value>
+			</iText>
+			
+			<iText>
+				<name>130101A051</name>
+				<value>记录日志：没有任何数据被用于记录，为什么要调用我啊？</value>
+			</iText>
+			
+			<iText>
+				<name>130101A061</name>
+				<value>记录日志：[日志操作时间]小于当前时间减去10小时的范围。时间容错范围为：10小时</value>
+			</iText>
+			
+			<iText>
+				<name>130101A071</name>
+				<value>记录日志：[日志操作时间]大于当前时间加上10小时的范围。时间容错范围为：10小时</value>
+			</iText>
+			
+			<iText>
+				<name>130101A081</name>
+				<value>记录日志：未知异常错误</value>
+			</iText>
+			
+			<iText>
+				<name>130101B011</name>
+				<value>记录日志：操作数据库异常</value>
+			</iText>
+			
+			<iText>
+				<name>130101C011</name>
+				<value>记录日志：操作日志文件异常</value>
+			</iText>
+			
+			
+			
+			<!-- 下面是注册相关的错误 -->
+			<iText>
+				<name>130102A001</name>
+				<value>注册日志：消息体为空或消息体格式异常</value>
+			</iText>
+			
+			<iText>
+				<name>130102A011</name>
+				<value>注册日志：[系统编号]不可为空</value>
+			</iText>
+			
+			<iText>
+				<name>130102A021</name>
+				<value>注册日志：[系统编号]超过最大长度:15</value>
+			</iText>
+			
+			<iText>
+				<name>130102A031</name>
+				<value>注册日志：[系统编号]不能包含汉字</value>
+			</iText>
+			
+			<iText>
+				<name>130102A041</name>
+				<value>注册日志：[系统编号]只能由英文、数字(0~9)和下划线组成</value>
+			</iText>
+			
+			<iText>
+				<name>130102A051</name>
+				<value>注册日志：[注册类型]为空或格式范围异常</value>
+			</iText>
+			
+			<iText>
+				<name>130102B011</name>
+				<value>注册日志：注册时访问或操作数据库异常</value>
+			</iText>
+			
+			<iText>
+				<name>130102B021</name>
+				<value>注册日志：更改注册类型时，新老注册类型一样无须修改</value>
+			</iText>
+			
+			<iText>
+				<name>130102B031</name>
+				<value>注册日志：更改注册类型时，访问或操作数据库异常</value>
+			</iText>
+			
+			<iText>
+				<name>130102B041</name>
+				<value>注册日志：创建日志表时操作数据库异常</value>
+			</iText>
+			
+		</I18N>
+		
+		
+		
+		<!-- 初始化国际化语言信息：英文 -->
+		<I18N id="I18N_Error" this="I18N_Error">
+			<language>en</language>
+			
+		</I18N>
+		
+	</xconfig>
+	
+</config>

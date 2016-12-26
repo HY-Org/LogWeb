@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="xconfig"         class="java.util.ArrayList" />
+	<import name="xparam"          class="java.util.LinkedHashMap" />
+	<import name="item"            class="org.hy.log.appInterfaces.InterfaceInfo" />
+	
+	
+	
+	<!-- 系统对外开放的接口配置 -->
+	<xconfig>
+		
+	    <xparam id="AppRestfuls" key="name">
+			
+			<item>
+				<name>AppMessageBodyProvider</name>
+				<value>org.hy.common.xml.plugins.AppMessageBodyProvider</value>
+				<comment>Provider</comment>
+			</item>
+			
+			<item>
+				<name>test/hello</name>
+				<value>org.hy.log.appInterfaces.restful.TestServiceImpl</value>
+				<comment>用于开发测试的服务</comment>
+			</item>
+			
+			<item>
+				<innerNo>Log.Create.A001</innerNo>
+				<name>log/log</name>
+				<value>org.hy.log.appInterfaces.restful.LogServiceImpl</value>
+				<requestClass>org.hy.log.msg.MsgLogInfoRequest</requestClass>
+				<responseClass></responseClass>
+				<mappingError>130101</mappingError>
+				<comment>记录日志接口</comment>
+				<httpMethod>POST</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+			<item>
+				<innerNo>Log.Register.A001</innerNo>
+				<name>log/register</name>
+				<value>org.hy.log.appInterfaces.restful.LogServiceImpl</value>
+				<requestClass>org.hy.log.msg.MsgLogRegisterRequest</requestClass>
+				<responseClass></responseClass>
+				<mappingError>130102</mappingError>
+				<comment>注册系统接口</comment>
+				<httpMethod>POST</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+			<item>
+				<innerNo>Log.Server.A001</innerNo>
+				<name>server/info</name>
+				<value>org.hy.log.appInterfaces.restful.ServerServiceImpl</value>
+				<comment>查看服务信息及判断服务是否存活</comment>
+				<httpMethod>GET</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+			<item>
+				<innerNo>Log.Server.A002</innerNo>
+				<name>server/showError</name>
+				<value>org.hy.log.appInterfaces.restful.ServerServiceImpl</value>
+				<comment>查看服务所有的接口错误列表</comment>
+				<httpMethod>GET</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+			<item>
+				<innerNo>Log.Server.A003</innerNo>
+				<name>server/showInterface</name>
+				<value>org.hy.log.appInterfaces.restful.ServerServiceImpl</value>
+				<comment>查看服务提供的接口列表</comment>
+				<httpMethod>GET</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+			<item>
+				<innerNo>Log.Server.A004</innerNo>
+				<name>server/initDB</name>
+				<value>org.hy.log.appInterfaces.restful.ServerServiceImpl</value>
+				<comment>初始化数据库对象</comment>
+				<httpMethod>GET</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+			<item>
+				<innerNo>Log.Server.A005</innerNo>
+				<name>server/showInterfaceParam</name>
+				<value>org.hy.log.appInterfaces.restful.ServerServiceImpl</value>
+				<comment>获取接口的输入参数信息</comment>
+				<httpMethod>GET</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+			<item>
+				<innerNo>Log.Server.A006</innerNo>
+				<name>server/showInterfaceReturn</name>
+				<value>org.hy.log.appInterfaces.restful.ServerServiceImpl</value>
+				<comment>获取接口的返回输出参数信息</comment>
+				<httpMethod>GET</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+			<item>
+				<innerNo>Log.Server.A007</innerNo>
+				<name>server/showTotal</name>
+				<value>org.hy.log.appInterfaces.restful.ServerServiceImpl</value>
+				<comment>获取接口访问量的概要统计信息</comment>
+				<httpMethod>GET</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+			<item>
+				<innerNo>Log.Server.A008</innerNo>
+				<name>server/showTotalDB</name>
+				<value>org.hy.log.appInterfaces.restful.ServerServiceImpl</value>
+				<comment>获取数据库访问量的概要统计信息</comment>
+				<httpMethod>GET</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+			<item>
+				<innerNo>Log.Server.A009</innerNo>
+				<name>server/showErrorLog</name>
+				<value>org.hy.log.appInterfaces.restful.ServerServiceImpl</value>
+				<comment>接口访问的错误日志</comment>
+				<httpMethod>GET</httpMethod>
+				<version>1.0</version>
+			</item>
+			
+		</xparam>
+		
+	</xconfig>
+	
+</config>

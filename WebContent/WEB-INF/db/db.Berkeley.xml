@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="xconfig"         class="java.util.ArrayList" />
+	<import name="envConfig"       class="com.sleepycat.je.EnvironmentConfig" />
+	<import name="dbConfig"        class="com.sleepycat.je.DatabaseConfig" />
+	<import name="berkeley"        class="org.hy.common.berkeley.Berkeley" />
+	
+	
+	
+	<!-- 嵌入式数据库的配置参数信息 -->
+	<xconfig>
+	
+		<envConfig id="BEnvConfig">
+			<allowCreate>true</allowCreate>
+			<transactional>false</transactional>
+			<locking>false</locking>
+			<cacheSize>104857600</cacheSize> <!-- 100 * 1024 * 1024 -->
+		</envConfig>
+		
+		
+		<dbConfig id="BDBConfig">
+			<allowCreate>true</allowCreate>
+			<deferredWrite>true</deferredWrite>
+		</dbConfig>
+		
+		
+		<berkeley id="Berkeley">
+			<environmentConfig ref="BEnvConfig" />
+			<databaseConfig    ref="BDBConfig"  />
+			<environmentHome>webhome:../../LogWeb_bdb</environmentHome>
+			<databaseName>LogWeb</databaseName>
+			<autoCommit>true</autoCommit>
+			
+			<call name="open" />
+		</berkeley>
+		
+	</xconfig>
+	
+</config>
