@@ -17,32 +17,31 @@
 2. 接口及监控页面
 ➢	接口API页面 
 http://127.0.0.1:8080/LogWeb/services/server/showInterface 
- 
+
 
 ➢	接口访问量页面
 http://127.0.0.1:8080/LogWeb/services/server/showTotal
- 
+
 
 ➢	数据库SQL执行情况的监控页面 
 http://127.0.0.1:8080/LogWeb/services/analyseDB 
- 
+
 
 ➢	数据库SQL组执行情况的监控页面
 http://127.0.0.1:8080/LogWeb/analyses/analyseDB?type=Group 
- 
+
 
 ➢	配置文件重新加载页面(默认密码logweb)
 http://127.0.0.1:8080/LogWeb/analyses/analyseObject 
- 
 
- 
+
 ➢	SQL执行日志页面(默认密码logweb)
 http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=$SQLBusway 
- 
+
 
 ➢	查看配置参数页面(默认密码logweb)
 http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=SYSParam
- 
- 
+
+
 ➢	手工执行SQL组页面(默认密码logweb)
 http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=GXSQL_MailTime 
