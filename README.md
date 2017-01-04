@@ -28,6 +28,8 @@ LogWeb
 
 ➢ SQL执行日志页面(默认密码logweb) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=$SQLBusway
 
+➢ SQL执行异常的日志页面(默认密码logweb) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=$SQLBuswayError
+
 ➢ 查看配置参数页面(默认密码logweb) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=SYSParam
 
 ➢ 手工执行SQL组页面(默认密码logweb) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=GXSQL_MailTime
