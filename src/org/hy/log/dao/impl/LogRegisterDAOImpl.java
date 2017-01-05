@@ -14,7 +14,6 @@ import org.hy.log.model.LogRegister;
 import org.hy.common.Date;
 import org.hy.common.Help;
 import org.hy.common.Return;
-import org.hy.common.StringHelp;
 import org.hy.common.xml.XSQL;
 import org.hy.common.xml.annotation.Xjava;
 
@@ -60,8 +59,6 @@ public class LogRegisterDAOImpl extends BaseDAO implements ILogRegisterDAO
         }
         
         io_LogInfo.setWaitTime((int)(Date.getNowTime().getTime() - io_LogInfo.getMsgRequestTime().getTime()));
-        io_LogInfo.setLogContent(StringHelp.replaceAll(io_LogInfo.getLogContent() ,"'" ,"''"));
-        io_LogInfo.setLogInfo(   StringHelp.replaceAll(io_LogInfo.getLogInfo()    ,"'" ,"''"));
         
         try
         {
