@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="xconfig"         class="java.util.ArrayList" />
+	<import name="server"          class="org.hy.common.net.ServerSocket" />
+	
+	
+	
+	<!-- 系统服务配置信息 -->
+	<xconfig>
+		
+		<server id="Server">
+			<log>true</log>
+			<call name="open" />
+		</server>
+		
+	</xconfig>
+	
+</config>
