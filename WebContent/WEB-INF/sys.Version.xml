@@ -37,6 +37,16 @@
 				<dbVersion>1.0</dbVersion>
 	        </version>
 	        
+	        
+	        <version>
+	            <name>1.2</name>
+				<value>2017-01-17</value>
+				<comment>
+				     添加：集群相关的一系列管理操作
+				</comment>
+				<dbVersion>1.0</dbVersion>
+	        </version>
+	        
 		</versions>
 		
 	</xconfig>
