@@ -3,6 +3,7 @@ package org.hy.log.common;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import org.hy.common.Help;
 import org.hy.common.app.Param;
 import org.hy.common.xml.XJava;
 
@@ -36,7 +37,7 @@ public class ApplicationRestfuls extends Application
         {
             try
             {
-                v_Classes.add(Class.forName(v_Param.getValue()));
+                v_Classes.add(Help.forName(v_Param.getValue()));
             }
             catch (Exception exce)
             {

@@ -14,6 +14,10 @@
 	    <startupConfig id="StartupConfig">
 	    
 	    	<item>
+	    		<value>sys.ServerConfig.xml</value>
+	    	</item>
+	    	
+	    	<item>
 				<value>sys.DB.Config.xml</value>
 			</item>
 	    
