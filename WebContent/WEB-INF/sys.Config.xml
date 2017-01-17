@@ -23,7 +23,6 @@
 	            <name>ClusterServers</name>
 				<value>
 				    127.0.0.1
-				   ,127.0.0.1:1721
 				</value>
 				<comment>全部集群服务器列表(用逗号分隔)</comment>
 	        </item>
