@@ -14,7 +14,7 @@ LogWeb
 
 
 
-2. 接口及监控页面
+2. 接口及监控页面(默认密码logweb)
 
 ➢ 接口API页面 http://127.0.0.1:8080/LogWeb/services/server/showInterface
 
@@ -24,12 +24,16 @@ LogWeb
 
 ➢ 数据库SQL组执行情况的监控页面 http://127.0.0.1:8080/LogWeb/analyses/analyseDB?type=Group
 
-➢ 配置文件重新加载页面(默认密码logweb) http://127.0.0.1:8080/LogWeb/analyses/analyseObject
+➢ 配置文件重新加载页面(支持集群) http://127.0.0.1:8080/LogWeb/analyses/analyseObject
 
-➢ SQL执行日志页面(默认密码logweb) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=$SQLBusway
+➢ 查看集群服务及状态列表 http://127.0.0.1:8080/LogWeb/analyses/analyseObject?cluster=Y
 
-➢ SQL执行异常的日志页面(默认密码logweb) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=$SQLBuswayError
+➢ SQL执行日志页面 http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=$SQLBusway
 
-➢ 查看配置参数页面(默认密码logweb) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=SYSParam
+➢ SQL执行异常的日志页面 http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=$SQLBuswayError
 
-➢ 手工执行SQL组页面(默认密码logweb) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=GXSQL_MailTime
+➢ 查看配置参数页面 http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=SYSParam
+
+➢ 手工执行SQL组页面(支持集群) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=GXSQL_MailTime
+
+➢ 手工执行定时任务页面(支持集群) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=JOB_CacheMessageKey

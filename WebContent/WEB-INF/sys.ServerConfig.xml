@@ -11,6 +11,7 @@
 	<xconfig>
 		
 		<server id="Server">
+			<log>true</log>
 			<call name="open" />
 		</server>
 		
