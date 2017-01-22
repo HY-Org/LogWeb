@@ -20,9 +20,9 @@ LogWeb
 
 ➢ 接口访问量页面 http://127.0.0.1:8080/LogWeb/services/server/showTotal
 
-➢ 数据库SQL执行情况的监控页面 http://127.0.0.1:8080/LogWeb/services/analyseDB
+➢ 数据库SQL执行情况的监控页面(支持集群) http://127.0.0.1:8080/LogWeb/services/analyseDB
 
-➢ 数据库SQL组执行情况的监控页面 http://127.0.0.1:8080/LogWeb/analyses/analyseDB?type=Group
+➢ 数据库SQL组执行情况的监控页面(支持集群) http://127.0.0.1:8080/LogWeb/analyses/analyseDB?type=Group
 
 ➢ 配置文件重新加载页面(支持集群) http://127.0.0.1:8080/LogWeb/analyses/analyseObject
 

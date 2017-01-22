@@ -620,7 +620,7 @@ public abstract class BaseCache<O extends BaseModel> extends Base
      */
     private Object getValue(Object i_Value)
     {
-        if ( i_Value.getClass() == Enum.class || MethodReflect.isExtendImplement(i_Value ,Enum.class) )
+        if ( MethodReflect.isExtendImplement(i_Value ,Enum.class) )
         {
             return ((Enum<?>)i_Value).ordinal();
         }
