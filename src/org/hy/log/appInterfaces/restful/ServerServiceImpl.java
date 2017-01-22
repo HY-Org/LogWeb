@@ -16,13 +16,12 @@ import org.hy.log.appInterfaces.IServerService;
 import org.hy.log.appInterfaces.InterfaceInfo;
 import org.hy.log.msg.MsgErrorResponse;
 import org.hy.log.service.IServerInfoService;
-
 import org.hy.common.Date;
 import org.hy.common.Help;
 import org.hy.common.Return;
+import org.hy.common.StringHelp;
 import org.hy.common.app.Param;
 import org.hy.common.xml.XJSON;
-import org.hy.common.xml.XSQL;
 import org.hy.common.xml.plugins.AppInterface;
 import org.hy.common.xml.plugins.AppMessage;
 
@@ -475,58 +474,7 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
     @Override
     public String showTotalDB()
     {
-        Map<String ,Object> v_Objs         = this.getObjects("XSQL_");
-        StringBuffer        v_Buffer       = new StringBuffer();
-        int                 v_Index        = 0;
-        String              v_Content      = this.getTemplateShowTotalContent();
-        long                v_RequestCount = 0;
-        long                v_SuccessCount = 0;
-        double              v_TotalTimeLen = 0;
-        double              v_AvgTimeLen   = 0;
-        
-        v_Objs = Help.toSort(v_Objs);
-        
-        for (String v_ID : v_Objs.keySet())
-        {
-            Object v_Obj = v_Objs.get(v_ID);
-            
-            if ( v_Obj != null && v_Obj instanceof XSQL )
-            {
-                XSQL v_XSQL = (XSQL)v_Obj;
-                
-                v_AvgTimeLen = Help.round(Help.division(v_XSQL.getSuccessTimeLen() ,v_XSQL.getSuccessCount()) ,2);
-                
-                v_Buffer.append(v_Content.replaceAll(":No"           ,String.valueOf(++v_Index))
-                                         .replaceAll(":Name"         ,v_ID)
-                                         .replaceAll(":RequestCount" ,String.valueOf(v_XSQL.getRequestCount()))
-                                         .replaceAll(":SuccessCount" ,String.valueOf(v_XSQL.getSuccessCount()))
-                                         .replaceAll(":FailCount"    ,String.valueOf(v_XSQL.getRequestCount() - v_XSQL.getSuccessCount()))
-                                         .replaceAll(":ParamURL"     ,"#")
-                                         .replaceAll(":SumTime"      ,Date.toTimeLen((long)v_XSQL.getSuccessTimeLen()))
-                                         .replaceAll(":AvgTime"      ,String.valueOf(v_AvgTimeLen))
-                               );
-                
-                v_RequestCount += v_XSQL.getRequestCount();
-                v_SuccessCount += v_XSQL.getSuccessCount();
-                v_TotalTimeLen += v_XSQL.getSuccessTimeLen();
-            }
-        }
-        
-        v_AvgTimeLen = Help.round(Help.division(v_TotalTimeLen ,v_SuccessCount) ,2);
-        
-        v_Buffer.append(v_Content.replaceAll(":No"           ,String.valueOf(++v_Index))
-                                 .replaceAll(":Name"         ,"合计")
-                                 .replaceAll(":RequestCount" ,String.valueOf(v_RequestCount))
-                                 .replaceAll(":SuccessCount" ,String.valueOf(v_SuccessCount))
-                                 .replaceAll(":FailCount"    ,String.valueOf(v_RequestCount - v_SuccessCount))
-                                 .replaceAll(":ParamURL"     ,"#")
-                                 .replaceAll(":SumTime"      ,Date.toTimeLen((long)v_TotalTimeLen))
-                                 .replaceAll(":AvgTime"      ,String.valueOf(v_AvgTimeLen))
-                       );
-        
-        return this.getTemplateShowTotal().replaceAll(":Content"   ,v_Buffer.toString())
-                                          .replaceAll(":NameTitle" ,"SQL访问标识")
-                                          .replaceAll(":Title"     ,"数据库访问量的概要统计");
+        return StringHelp.replaceAll(getTemplateGoto() ,":Goto" ,"analyses/analyseDB");
     }
     
     
@@ -658,6 +606,13 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
     private String getTemplateShowErrorLogContent()
     {
         return this.getTemplateContent("template.showErrorLogContent.html");
+    }
+    
+    
+    
+    private String getTemplateGoto()
+    {
+        return this.getTemplateContent("template.goto.html");
     }
     
 }
