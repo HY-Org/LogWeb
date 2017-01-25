@@ -43,6 +43,7 @@
 				<value>2017-01-17</value>
 				<comment>
 				     添加：集群相关的一系列管理操作
+				     添加：单点登陆的功能
 				</comment>
 				<dbVersion>1.0</dbVersion>
 	        </version>

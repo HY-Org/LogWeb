@@ -69,7 +69,7 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
     @Override
     public String info()
     {
-        StringBuffer v_Buffer = new StringBuffer();
+        StringBuilder v_Buffer = new StringBuilder();
         
         v_Buffer.append("App Web ID: ").append(this.getAppWebID());
         v_Buffer.append("<br><br>");
@@ -108,7 +108,7 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
     public String showError()
     {
         Map<String ,MsgErrorResponse> v_AppErrors = (Map<String ,MsgErrorResponse>)this.getObject("AppInterfaces_Error");
-        StringBuffer                  v_Buffer    = new StringBuffer();
+        StringBuilder                 v_Buffer    = new StringBuilder();
         int                           v_Index     = 0;
         String                        v_Content   = this.getTemplateShowErrorContent();
         
@@ -145,7 +145,7 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
     public String showInterface()
     {
         Map<String ,InterfaceInfo> v_AppRestfuls = (Map<String ,InterfaceInfo>)this.getObject("AppRestfuls");
-        StringBuffer               v_Buffer      = new StringBuffer();
+        StringBuilder              v_Buffer      = new StringBuilder();
         int                        v_Index       = 0;
         String                     v_Content     = this.getTemplateShowInterfaceContent();
         
@@ -210,7 +210,7 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
     public String initDB()
     {
         List<Return<String>> v_Rets    = this.serverInfoService.initDB();
-        StringBuffer         v_Buffer  = new StringBuffer();
+        StringBuilder        v_Buffer  = new StringBuilder();
         String               v_Content = this.getTemplateInitDBContent();
         int                  v_Index   = 0;
         
@@ -268,7 +268,7 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
             BaseEntity                 v_Msg          = (BaseEntity)Class.forName(v_AppInterface.getClassName()).newInstance();
             XJSON                      v_XJSON        = new XJSON();
             String                     v_ErrorContent = this.getTemplateShowErrorContent();
-            StringBuffer               v_Buffer       = new StringBuffer();
+            StringBuilder              v_Buffer       = new StringBuilder();
             int                        v_ErrorIndex   = 0;
             
             v_XJSON.setReturnNVL(true);
@@ -331,7 +331,7 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
             Map<String ,Object>        v_Docs         = null;
             List<MsgErrorResponse>     v_MsgErrors    = this.getErrors(v_Interface.getInnerNo());
             String                     v_ErrorContent = this.getTemplateShowErrorContent();
-            StringBuffer               v_Buffer       = new StringBuffer();
+            StringBuilder              v_Buffer       = new StringBuilder();
             int                        v_ErrorIndex   = 0;
             
             v_XJSON.setReturnNVL(true);
@@ -406,7 +406,7 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
     {
         Map<String ,AppInterface>  v_Interfaces  = (Map<String ,AppInterface>)this.getObject("AppInterfaces");
         Map<String ,InterfaceInfo> v_AppRestfuls = (Map<String ,InterfaceInfo>)this.getObject("AppRestfuls");
-        StringBuffer               v_Buffer      = new StringBuffer();
+        StringBuilder              v_Buffer      = new StringBuilder();
         int                        v_Index       = 0;
         String                     v_Content     = this.getTemplateShowTotalContent();
         long                       v_RequestCount = 0;
@@ -497,7 +497,7 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
     public String showErrorLog(@QueryParam("no") String i_InterfaceNo)
     {
         AppMessage<?> [] v_AppMsgs = null;
-        StringBuffer     v_Buffer  = new StringBuffer();
+        StringBuilder    v_Buffer  = new StringBuilder();
         String           v_Content = this.getTemplateShowErrorLogContent();
         int              v_Index   = 0;
         

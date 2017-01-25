@@ -27,6 +27,18 @@
 				<comment>全部集群服务器列表(用逗号分隔)</comment>
 	        </item>
 	        
+	        <item id="ClusterTimeout">
+	            <name>ClusterTimeout</name>
+				<value>30000</value>
+				<comment>集群并发通讯的超时时长(单位：毫秒)</comment>
+	        </item>
+	        
+	        <item id="SSOSessionTimeOut">
+	            <name>SSOSessionTimeOut</name>
+				<value>60</value>
+				<comment>单点登陆的会话超时时长(单位：秒)</comment>
+	        </item>
+	        
 	        <item id="RootPackageName">
 	            <name>RootPackageName</name>
 				<value>org.hy.log</value>
