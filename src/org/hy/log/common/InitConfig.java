@@ -133,7 +133,7 @@ public final class InitConfig extends AppInitConfig
     
     private int getIntConfig(String i_XJavaID)
     {
-        return Integer.parseInt(((Param)XJava.getObject(i_XJavaID)).getValue());
+        return Integer.parseInt(XJava.getParam(i_XJavaID).getValue());
     }
     
 }
