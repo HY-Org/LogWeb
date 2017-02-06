@@ -12,9 +12,9 @@ LogWeb
 
     第三步：浏览器中访问 http://127.0.0.1:8080/LogWeb/services/server/initDB 页面，片刻之后数据库所有对象及初始数据就建立好了。
 
+2. 数据通讯的主端口为1921，浮动端口为17000~17999，均可在sys.ServerConfig.xml配置中修改。请保证服务器防火墙允许这些端口的通讯。
 
-
-2. 接口及监控页面(默认密码logweb)
+3. 接口及监控页面(默认密码logweb)
 
 ➢ 接口API页面 http://127.0.0.1:8080/LogWeb/services/server/showInterface
 

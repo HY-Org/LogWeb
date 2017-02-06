@@ -12,6 +12,11 @@
 		
 		<server id="Server">
 			<port>1921</port>
+<!--        
+			<minPort>17000</minPort>
+			<maxPort>17999</maxPort>
+ -->
+			
 			<call name="open" />
 		</server>
 		
