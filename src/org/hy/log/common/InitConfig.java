@@ -57,14 +57,13 @@ public final class InitConfig extends AppInitConfig
         {
             $Init = true;
             
-            init_TPool();
-            
             try
             {
                 this.initW("sys.Config.xml" ,this.xmlRoot);
                 this.initW("startup.Config.xml" ,this.xmlRoot);
                 this.initW((List<Param>)XJava.getObject("StartupConfig") ,this.xmlRoot);
                 this.initW(((Param)XJava.getObject("RootPackageName")).getValue());
+                init_TPool();
                 this.initW("job.Config.xml" ,this.xmlRoot);
             }
             catch (Exception exce)
