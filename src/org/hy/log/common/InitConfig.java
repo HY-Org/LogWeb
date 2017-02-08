@@ -57,6 +57,8 @@ public final class InitConfig extends AppInitConfig
         {
             $Init = true;
             
+            init_TPool();
+            
             try
             {
                 this.initW("sys.Config.xml" ,this.xmlRoot);
@@ -73,7 +75,6 @@ public final class InitConfig extends AppInitConfig
             
             
             init_I18NError();
-            init_TPool();
             
             
             // 容灾机制：将本地缓存的所有日志消息全部入库。
