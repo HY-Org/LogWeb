@@ -43,3 +43,18 @@ LogWeb
 ➢ 手工执行SQL组页面(支持集群) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=GXSQL_MailTime
 
 ➢ 手工执行定时任务页面(支持集群) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=JOB_CacheMessageKey
+
+
+
+=====
+引用 https://github.com/HY-ZhengWei/hy.common.base 类库
+
+引用 https://github.com/HY-ZhengWei/hy.common.db 类库
+
+引用 https://github.com/HY-ZhengWei/hy.common.file 类库
+
+引用 https://github.com/HY-ZhengWei/hy.common.mail 类库
+
+引用 https://github.com/HY-ZhengWei/hy.common.redis 类库
+
+引用 https://github.com/HY-ZhengWei/hy.common.tpool 类库
