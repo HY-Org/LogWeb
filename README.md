@@ -45,11 +45,10 @@ LogWeb
 ➢ 手工执行定时任务页面(支持集群) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=JOB_CacheMessageKey
 
 
+
 =====
 #### 客户端调用演示代码
 ```java
-	package com.fms.xx.common;
-	
 	import java.net.URLDecoder;
 	import java.util.Hashtable;
 	import java.util.Map;
