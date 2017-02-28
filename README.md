@@ -60,8 +60,6 @@ LogWeb
 	
 	
 	
-	
-	
 	/**
 	 * Rest服务请求方法
 	 * 
@@ -127,8 +125,7 @@ LogWeb
 	public static void main(String [] args)
 	{
 		// 注册普通单表
-		BaseAppMessage.restRequest("http://IP:Port/LogWeb/services/log/register" ,"Json报文。请参见testScript/restful/Log.Register.A001.注册系统.01.普通单表.xml" ,"UTF-8");
-		
+		BaseAppMessage.restRequest("http://IP:Port/LogWeb/services/log/register" ,"Json报文。请参见testScript/restful/Log.Register.A001.注册系统.01.普通单表.xml中的Json字符串" ,"UTF-8");
 		
 		// 记录日志
 		BaseAppMessage.restRequest("http://IP:Port/LogWeb/services/log/log" ,"Json报文。请参见testScript/restful/Log.Create.A001.记录日志.001.xml中的Json字符串" ,"UTF-8");
