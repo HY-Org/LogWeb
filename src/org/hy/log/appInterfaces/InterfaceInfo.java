@@ -16,6 +16,10 @@ import org.hy.common.xml.plugins.AppInterfaceInfo;
 public class InterfaceInfo extends AppInterfaceInfo
 {
     
+    private static final long serialVersionUID = 883769689537471799L;
+
+    
+    
     public InterfaceInfo()
     {
         super();

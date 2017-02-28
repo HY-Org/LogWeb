@@ -16,6 +16,10 @@ import org.hy.common.app.Param;
 public class Version extends Param
 {
     
+    private static final long serialVersionUID = -1034991845979052397L;
+    
+    
+    
     /** 数据库脚本的版本 */
     private String dbVersion;
 
