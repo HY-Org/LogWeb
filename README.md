@@ -45,6 +45,96 @@ LogWeb
 ➢ 手工执行定时任务页面(支持集群) http://127.0.0.1:8080/LogWeb/analyses/analyseObject?xid=JOB_CacheMessageKey
 
 
+=====
+#### 客户端调用演示代码
+```java
+	package com.fms.xx.common;
+	
+	import java.net.URLDecoder;
+	import java.util.Hashtable;
+	import java.util.Map;
+	
+	import com.sun.jersey.api.client.Client;
+	import com.sun.jersey.api.client.ClientResponse;
+	import com.sun.jersey.api.client.WebResource;
+	
+	
+	
+	
+	
+	/**
+	 * Rest服务请求方法
+	 * 
+	 * @author      ZhengWei(HY)
+	 * @createDate  2014-12-30
+	 * @version     v1.0
+	 */
+	public class BaseAppMessage
+	{
+	    
+	    private static Client                   $Client       = Client.create();
+	    
+	    private static Map<String ,WebResource> $WebResources = new Hashtable<String ,WebResource>();
+	    
+	    
+	    
+	    /**
+	     * Rest服务请求方法
+	     * 
+	     * @author      ZhengWei(HY)
+	     * @createDate  2014-12-30
+	     * @version     v1.0
+	     *
+	     * @param i_URL
+	     * @param i_Data
+	     * @param i_DataECode  响应结果的字符类型。如UTF-8
+	     * @return
+	     */
+	    public static String restRequest(String i_URL ,Object i_Data ,String i_DataECode)
+	    {
+	        String v_Result = null;
+	        
+	        try 
+	        {
+	            WebResource v_WebResource = null;
+	            synchronized ( BaseAppMessage.class )
+	            {
+	                v_WebResource = $WebResources.get(i_URL);
+	                if ( v_WebResource == null )
+	                {
+	                    v_WebResource = $Client.resource(i_URL);
+	                    $WebResources.put(i_URL ,v_WebResource);
+	                }
+	            }
+	            
+	            ClientResponse v_Response    = v_WebResource.post(ClientResponse.class ,i_Data);
+	            
+	            v_Result = v_Response.getEntity(String.class);
+	            v_Result = URLDecoder.decode(v_Result ,i_DataECode);
+	        } 
+	        catch (Exception exce) 
+	        {
+	            exce.printStackTrace();
+	        }
+	        
+	        return v_Result;
+	    }
+	    
+	}
+	
+	
+	
+	public static void main(String [] args)
+	{
+		// 注册普通单表
+		BaseAppMessage.restRequest("http://IP:Port/LogWeb/services/log/register" ,"Json报文。请参见testScript/restful/Log.Register.A001.注册系统.01.普通单表.xml" ,"UTF-8");
+		
+		
+		// 记录日志
+		BaseAppMessage.restRequest("http://IP:Port/LogWeb/services/log/log" ,"Json报文。请参见testScript/restful/Log.Create.A001.记录日志.001.xml中的Json字符串" ,"UTF-8");
+	}
+```
+
 
 =====
 #### 本项目引用Jar包，其源码链接如下
