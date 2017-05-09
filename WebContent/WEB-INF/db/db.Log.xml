@@ -144,7 +144,7 @@
 			
 			<content if="SQLSERVER == DataSourceType.getValue">
 				<![CDATA[
-					CREATE NONCLUSTERED INDEX IX_TLog_LogID_:sysID ON TLog_:sysID (logID);
+					CREATE NONCLUSTERED INDEX IX_TLog_LogID_:sysID ON TLog_:sysID (logID)
 				]]>
 			</content>
 			
@@ -165,7 +165,7 @@
 			
 			<content if="SQLSERVER == DataSourceType.getValue">
 				<![CDATA[
-					CREATE NONCLUSTERED INDEX IX_TLog_OperationTime_:sysID ON TLog_:sysID (operationTime);
+					CREATE NONCLUSTERED INDEX IX_TLog_OperationTime_:sysID ON TLog_:sysID (operationTime)
 				]]>
 			</content>
 			
