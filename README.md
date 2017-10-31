@@ -26,7 +26,7 @@ LogWeb
     
     5.2 接口级粒度：可指定具体的接口设置不同的密钥签名。
     
-    5.3 可通过数据库TMessageKeys表进行配置。此表的数据，也是[定时缓存](WebContent/WEB-INF/job.Config.xml)的，见job.Config.xml中的"缓存消息密钥"。
+    5.3 可通过数据库TMessageKeys表进行配置。此表的数据，也是[定时缓存](WebContent/WEB-INF/job.Config.xml)的，见job.Config.xml配置中的"缓存消息密钥"。
 
 6. 接口及监控页面(默认密码logweb)
 
