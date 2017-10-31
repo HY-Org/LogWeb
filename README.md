@@ -30,6 +30,8 @@ LogWeb
 
 6. 接口及监控页面(默认密码logweb)
 
+➢ 分析中心页面 http://127.0.0.1:8080/LogWeb/analyses
+
 ➢ 接口API页面 http://127.0.0.1:8080/LogWeb/services/server/showInterface
 
 ➢ 接口访问量页面 http://127.0.0.1:8080/LogWeb/services/server/showTotal
