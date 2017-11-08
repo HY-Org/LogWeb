@@ -104,6 +104,14 @@
 	  </servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>AnalysesServlet</servlet-name>
+		<servlet-class>org.hy.common.xml.plugins.analyse.AnalysesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>AnalysesServlet</servlet-name>
+    	<url-pattern>/analyses</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>AnalyseObjectServlet</servlet-name>
