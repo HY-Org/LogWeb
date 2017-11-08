@@ -17,6 +17,7 @@
 			
 			<contentDB>
 				<keyReplace>true</keyReplace>
+				<safeCheck>false</safeCheck>
 			</contentDB>
 			
 			<content>
@@ -64,6 +65,7 @@
 			
 			<contentDB>
 				<keyReplace>true</keyReplace>
+				<safeCheck>false</safeCheck>
 			</contentDB>
 			
 			<content>
