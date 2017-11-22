@@ -1,5 +1,7 @@
 package org.hy.log.common;
 
+import org.hy.common.MethodReflect;
+
 
 
 
@@ -38,7 +40,7 @@ public abstract class BaseModel extends BaseEntity implements Comparable<BaseMod
         {
             return 0;
         }
-        else if ( this.getClass().equals(i_Other.getClass()) )
+        else
         {
             if ( i_Other.getCompareValue() == null )
             {
@@ -52,10 +54,6 @@ public abstract class BaseModel extends BaseEntity implements Comparable<BaseMod
             {
                 return this.getCompareValue().compareTo(i_Other.getCompareValue());
             }
-        }
-        else
-        {
-            return 1;
         }
     }
     
@@ -87,7 +85,8 @@ public abstract class BaseModel extends BaseEntity implements Comparable<BaseMod
         {
             return true;
         }
-        else if ( this.getClass().equals(i_Other.getClass()) )
+        else if ( this.getClass().equals(i_Other.getClass()) 
+               || MethodReflect.isExtendImplement(i_Other ,BaseModel.class) )
         {
             BaseModel v_Other = (BaseModel)i_Other;
             if ( v_Other.getCompareValue() == null )
@@ -114,10 +113,11 @@ public abstract class BaseModel extends BaseEntity implements Comparable<BaseMod
     }
 
     
-    
-    /**
+
+	/**
      * 获取行主键
      */
     public abstract String getRowKey();
+	
     
 }
