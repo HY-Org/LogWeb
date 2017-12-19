@@ -2,6 +2,10 @@ package org.hy.log.dao;
 
 import java.util.Map;
 
+import org.hy.common.xml.annotation.XType;
+import org.hy.common.xml.annotation.Xjava;
+import org.hy.common.xml.annotation.Xparam;
+import org.hy.common.xml.annotation.Xsql;
 import org.hy.log.model.DBTableInfo;
 
 
@@ -15,6 +19,7 @@ import org.hy.log.model.DBTableInfo;
  * @createDate  2014-11-28
  * @version     v1.0
  */
+@Xjava(id="ServerInfoDAO" ,value=XType.XSQL)
 public interface IServerInfoDAO
 {
     
@@ -28,6 +33,7 @@ public interface IServerInfoDAO
      * @param i_SQL
      * @return
      */
+    @Xsql("XSQL_God")
     public boolean execute(String i_SQL);
     
     
@@ -41,6 +47,7 @@ public interface IServerInfoDAO
      *
      * @return
      */
+    @Xsql("XSQL_DBTableInfo_Query")
     public Map<String ,DBTableInfo> getTables();
     
     
@@ -55,6 +62,7 @@ public interface IServerInfoDAO
      * @param i_TableName
      * @return
      */
-    public boolean isExists(String i_TableName);
+    @Xsql(id="XSQL_DBTableInfo_QueryByName" ,returnOne=true)
+    public DBTableInfo isExists(@Xparam("tableName") String i_TableName);
     
 }
