@@ -100,7 +100,7 @@ public class LogRegisterDAOImpl extends BaseDAO implements ILogRegisterDAO
     {
         Return<String> v_Ret = new Return<String>(false);
         
-        if ( this.serverInfoDAO.isExists("TLOG_" + i_TableName.trim().toUpperCase()) )
+        if ( this.serverInfoDAO.isExists("TLOG_" + i_TableName.trim().toUpperCase()) != null )
         {
             v_Ret.paramInt = 0;
             return v_Ret.set(true);
@@ -153,7 +153,7 @@ public class LogRegisterDAOImpl extends BaseDAO implements ILogRegisterDAO
     @Override
     public void taskCreateTable()
     {
-        if ( !this.serverInfoDAO.isExists("TLogRegister") )
+        if ( this.serverInfoDAO.isExists("TLogRegister") == null )
         {
             return;
         }
