@@ -22,8 +22,8 @@
 	    </job>
 	    
 	    
-	    <job id="JOB_CacheMessageKey">
-	    	<code>JOB_CacheMessageKey</code>
+	    <job id="JOB_CacheMessageKeySSID">
+	    	<code>JOB_CacheMessageKeySSID</code>
 	    	<name>缓存消息密钥（接口级）</name>
 	    	<intervalType ref="this.$IntervalType_Day"/>
 	    	<intervalLen>1</intervalLen>
@@ -35,9 +35,8 @@
 	    </job>
 	    
 	    
-	    
-	    <job id="JOB_CacheMessageKey">
-	    	<code>JOB_CacheMessageKey</code>
+	    <job id="JOB_CacheMessageKeySysID">
+	    	<code>JOB_CacheMessageKeySysID</code>
 	    	<name>缓存消息密钥（系统级）</name>
 	    	<intervalType ref="this.$IntervalType_Day"/>
 	    	<intervalLen>1</intervalLen>
@@ -63,8 +62,9 @@
 			    
 	    
 	    <jobs id="JOBS" this="JOBS">
-	    	<addJob ref="JOB_CacheMessageKey" />
-	    	<addJob ref="JOB_TaskCreateTable" if="IsTimeTaskServer.getValue" />
+	    	<addJob ref="JOB_CacheMessageKeySSID"  />
+	    	<addJob ref="JOB_CacheMessageKeySysID" />
+	    	<addJob ref="JOB_TaskCreateTable"      if="IsTimeTaskServer.getValue" />
 	    	<call name="startup" />
 	    </jobs>
 		
