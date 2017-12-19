@@ -1,5 +1,9 @@
 package org.hy.log.dao;
 
+import org.hy.common.xml.annotation.XType;
+import org.hy.common.xml.annotation.Xjava;
+import org.hy.common.xml.annotation.Xsql;
+
 
 
 
@@ -11,17 +15,32 @@ package org.hy.log.dao;
  * @createDate  2016-02-23
  * @version     v1.0
  */
+@Xjava(id="MessageKeyDAO" ,value=XType.XSQL)
 public interface IMessageKeyDAO
 {
     
     /**
-     * 缓存消息密钥
+     * 缓存消息密钥（接口级）
      * 
      * @author      ZhengWei(HY)
      * @createDate  2016-02-23
      * @version     v1.0
      *
      */
-    public void cacheMessageKeys();
+    @Xsql(id="XSQL_MessageKey_Query_SSID" ,updateCacheID="AppMsgKeySSID" ,log="更新消息密钥(接口级)")
+    public void cacheMessageKeySSID();
+    
+    
+    
+    /**
+     * 缓存消息密钥（系统级）
+     * 
+     * @author      ZhengWei(HY)
+     * @createDate  2017-12-19
+     * @version     v1.0
+     *
+     */
+    @Xsql(id="XSQL_MessageKey_Query_SysID" ,updateCacheID="AppMsgKeySysID" ,log="更新消息密钥(系统级)")
+    public void cacheMessageKeySysID();
     
 }

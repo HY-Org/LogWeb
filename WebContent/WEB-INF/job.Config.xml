@@ -24,12 +24,26 @@
 	    
 	    <job id="JOB_CacheMessageKey">
 	    	<code>JOB_CacheMessageKey</code>
-	    	<name>缓存消息密钥</name>
+	    	<name>缓存消息密钥（接口级）</name>
 	    	<intervalType ref="this.$IntervalType_Day"/>
 	    	<intervalLen>1</intervalLen>
-	    	<startTime>2016-01-01 01:00:00</startTime>
+	    	<startTime>2016-01-01 01:01:00</startTime>
 	    	<xjavaID>MessageKeyDAO</xjavaID>
-	    	<methodName>cacheMessageKeys</methodName>
+	    	<methodName>cacheMessageKeySSID</methodName>
+	    	<!-- 初始化是否立即执行 -->
+	    	<initExecute>true</initExecute>
+	    </job>
+	    
+	    
+	    
+	    <job id="JOB_CacheMessageKey">
+	    	<code>JOB_CacheMessageKey</code>
+	    	<name>缓存消息密钥（系统级）</name>
+	    	<intervalType ref="this.$IntervalType_Day"/>
+	    	<intervalLen>1</intervalLen>
+	    	<startTime>2016-01-01 01:02:00</startTime>
+	    	<xjavaID>MessageKeyDAO</xjavaID>
+	    	<methodName>cacheMessageKeySysID</methodName>
 	    	<!-- 初始化是否立即执行 -->
 	    	<initExecute>true</initExecute>
 	    </job>
