@@ -47,7 +47,7 @@
 	    
 			<item id="DataSourceType">
 	            <name>DataSourceType</name>
-				<value>MYSQL</value>
+				<value>SQLSERVER</value>
 				<comment>配置数据库是什么类型的。目前支持有：MYSQL、SQLSERVER</comment>
 	        </item>
 	        

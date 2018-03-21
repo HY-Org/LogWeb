@@ -28,10 +28,10 @@
 		<!-- SQL Server数据库 -->
 		<dataSource id="DS_LogWeb_01" if="SQLSERVER == DataSourceType.getValue">
 			<driverClass>net.sourceforge.jtds.jdbc.Driver</driverClass>
-			<jdbcUrl>jdbc:jtds:sqlserver://10.1.50.43:1433;DatabaseName=LogWeb</jdbcUrl>
+			<jdbcUrl>jdbc:jtds:sqlserver://10.1.50.94:1433;DatabaseName=LogWeb</jdbcUrl>
 			<user>sa</user>
-			<password>sa123</password>
-			<maxPoolSize>10</maxPoolSize>
+			<password>sa123456</password>
+			<maxPoolSize>100</maxPoolSize>
 			<initialPoolSize>2</initialPoolSize>
 			<checkoutTimeout>10000</checkoutTimeout>
 		</dataSource>
