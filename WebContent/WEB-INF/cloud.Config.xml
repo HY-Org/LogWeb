@@ -16,9 +16,7 @@
 		<item id="ClusterServers">
             <name>ClusterServers</name>
 			<value>
-			    10.1.50.41:1921
-			   ,10.1.50.42:1921
-			   ,10.1.50.93:1921
+			    127.0.0.1:1921
 			</value>
 			<comment>全部集群服务器列表(用逗号分隔)</comment>
         </item>
