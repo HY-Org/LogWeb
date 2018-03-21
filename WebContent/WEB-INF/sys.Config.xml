@@ -19,14 +19,6 @@
 				<comment>部署Web服务所在主机的标示(建议只包含：数字和英文)</comment>
 	        </item>
 	        
-	        <item id="ClusterServers">
-	            <name>ClusterServers</name>
-				<value>
-				    127.0.0.1:1921
-				</value>
-				<comment>全部集群服务器列表(用逗号分隔)</comment>
-	        </item>
-	        
 	        <item id="ClusterTimeout">
 	            <name>ClusterTimeout</name>
 				<value>30000</value>

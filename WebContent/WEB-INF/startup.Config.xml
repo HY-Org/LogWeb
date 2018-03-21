@@ -12,7 +12,10 @@
 	<xconfig>
 		
 	    <startupConfig id="StartupConfig">
-	    
+	    	<item>
+	    		<value>cloud.Config.xml</value>
+	    	</item>
+	    	
 	    	<item>
 	    		<value>sys.ServerConfig.xml</value>
 	    	</item>
