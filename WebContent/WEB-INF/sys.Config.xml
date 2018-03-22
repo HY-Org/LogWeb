@@ -40,7 +40,7 @@
 			<item id="DataSourceType">
 	            <name>DataSourceType</name>
 				<value>SQLSERVER</value>
-				<comment>配置数据库是什么类型的。目前支持有：MYSQL、SQLSERVER</comment>
+				<comment>配置数据库是什么类型的。详见：org.hy.common.db.DataSourceGroup</comment>
 	        </item>
 	        
 			<item id="MsgPWD">
