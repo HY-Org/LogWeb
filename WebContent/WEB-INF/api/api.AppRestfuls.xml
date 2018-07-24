@@ -30,7 +30,7 @@
 				<name>log/log</name>
 				<value>org.hy.log.appInterfaces.restful.LogServiceImpl</value>
 				<requestClass>org.hy.log.msg.MsgLogInfoRequest</requestClass>
-				<responseClass></responseClass>
+				<responseClass>java.lang.String</responseClass>
 				<mappingError>130101</mappingError>
 				<comment>记录日志接口</comment>
 				<httpMethod>POST</httpMethod>
@@ -42,7 +42,7 @@
 				<name>log/register</name>
 				<value>org.hy.log.appInterfaces.restful.LogServiceImpl</value>
 				<requestClass>org.hy.log.msg.MsgLogRegisterRequest</requestClass>
-				<responseClass></responseClass>
+				<responseClass>java.lang.String</responseClass>
 				<mappingError>130102</mappingError>
 				<comment>注册系统接口</comment>
 				<httpMethod>POST</httpMethod>

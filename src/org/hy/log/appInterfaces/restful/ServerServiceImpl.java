@@ -18,6 +18,7 @@ import org.hy.log.msg.MsgErrorResponse;
 import org.hy.log.service.IServerInfoService;
 import org.hy.common.Date;
 import org.hy.common.Help;
+import org.hy.common.MethodReflect;
 import org.hy.common.Return;
 import org.hy.common.StringHelp;
 import org.hy.common.app.Param;
@@ -344,16 +345,24 @@ public class ServerServiceImpl extends BaseAppMessage implements IServerService
             {
                 if ( !Help.isNull(v_IFReturn.getValue()) )
                 {
-                    BaseEntity v_MsgReturn = (BaseEntity)Class.forName(v_IFReturn.getValue()).newInstance();
-                    v_Docs    = v_MsgReturn.gatDocsInfoForever(v_Interface.getInnerNo());
-                    if ( !Help.isNull(v_Docs) )
+                    Object v_MsgRetObj = Class.forName(v_IFReturn.getValue()).newInstance();
+                    if ( v_MsgRetObj == null || !MethodReflect.isExtendImplement(v_MsgRetObj ,BaseEntity.class) )
                     {
-                        v_ReturnC = v_XJSON.parser(v_MsgReturn.gatDocsInfoForever(v_Interface.getInnerNo())).toJSONString();
-                        v_ReturnC = getAppInterfaceSysReturn().replaceAll(":BODY" ,v_ReturnC);
+                        v_ReturnC = getAppInterfaceSysReturn().replaceAll(":BODY" ,"\"无消息体\"");
                     }
                     else
                     {
-                        v_ReturnC = getAppInterfaceSysReturn().replaceAll(":BODY" ,"\"无消息体\"");
+                        BaseEntity v_MsgReturn = (BaseEntity)v_MsgRetObj;
+                        v_Docs    = v_MsgReturn.gatDocsInfoForever(v_Interface.getInnerNo());
+                        if ( !Help.isNull(v_Docs) )
+                        {
+                            v_ReturnC = v_XJSON.parser(v_MsgReturn.gatDocsInfoForever(v_Interface.getInnerNo())).toJSONString();
+                            v_ReturnC = getAppInterfaceSysReturn().replaceAll(":BODY" ,v_ReturnC);
+                        }
+                        else
+                        {
+                            v_ReturnC = getAppInterfaceSysReturn().replaceAll(":BODY" ,"\"无消息体\"");
+                        }
                     }
                 }
                 else
