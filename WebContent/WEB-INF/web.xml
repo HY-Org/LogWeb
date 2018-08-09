@@ -110,7 +110,7 @@
 	</servlet>
 	<servlet-mapping>
     	<servlet-name>AnalysesServlet</servlet-name>
-    	<url-pattern>/analyses</url-pattern>
+    	<url-pattern>/analyses/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
