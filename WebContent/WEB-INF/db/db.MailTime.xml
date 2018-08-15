@@ -75,7 +75,7 @@
 			
 			<sqlNode>
 				<type ref="this.$Type_ExecuteJava" />
-				<xjavaID>MailTimeDAO</xjavaID>
+				<xid>MailTimeDAO</xid>
 	    		<methodName>sendMail</methodName>
 			</sqlNode>
 		
