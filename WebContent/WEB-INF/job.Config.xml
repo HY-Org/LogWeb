@@ -17,7 +17,7 @@
 	    	<intervalType ref="this.$IntervalType_Minute"/>
 	    	<intervalLen>19</intervalLen>
 	    	<startTime>2014-01-01 00:00:00</startTime>
-	    	<xjavaID>LogRegisterDAO</xjavaID>
+	    	<xid>LogRegisterDAO</xid>
 	    	<methodName>taskCreateTable</methodName>
 	    </job>
 	    
@@ -28,7 +28,7 @@
 	    	<intervalType ref="this.$IntervalType_Day"/>
 	    	<intervalLen>1</intervalLen>
 	    	<startTime>2016-01-01 01:01:00</startTime>
-	    	<xjavaID>MessageKeyDAO</xjavaID>
+	    	<xid>MessageKeyDAO</xid>
 	    	<methodName>cacheMessageKeySSID</methodName>
 	    	<!-- 初始化是否立即执行 -->
 	    	<initExecute>true</initExecute>
@@ -41,7 +41,7 @@
 	    	<intervalType ref="this.$IntervalType_Day"/>
 	    	<intervalLen>1</intervalLen>
 	    	<startTime>2016-01-01 01:02:00</startTime>
-	    	<xjavaID>MessageKeyDAO</xjavaID>
+	    	<xid>MessageKeyDAO</xid>
 	    	<methodName>cacheMessageKeySysID</methodName>
 	    	<!-- 初始化是否立即执行 -->
 	    	<initExecute>true</initExecute>
@@ -54,7 +54,7 @@
 	    	<intervalType ref="this.$IntervalType_Minute"/>
 	    	<intervalLen>1</intervalLen>
 	    	<startTime>2016-01-01 00:00:00</startTime>
-	    	<xjavaID>MailTimeDAO</xjavaID>
+	    	<xid>MailTimeDAO</xid>
 	    	<methodName>scanMails</methodName>
 	    	<initExecute>true</initExecute>
 	    </job>
