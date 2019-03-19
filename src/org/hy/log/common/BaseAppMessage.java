@@ -76,7 +76,7 @@ public class BaseAppMessage extends Base
         
         if ( v_Ret == null )
         {
-            throw new NoClassDefFoundError("Error[" + i_ErrorCode +"] is not find.");
+            throw new RuntimeException("Error[" + i_ErrorCode +"] is not find.");
         }
         
         return v_Ret;
@@ -97,7 +97,7 @@ public class BaseAppMessage extends Base
         
         if ( v_Error == null )
         {
-            throw new NoClassDefFoundError("Error[" + i_ErrorCode +"] is not find.");
+            throw new RuntimeException("Error[" + i_ErrorCode +"] is not find.");
         }
         
         io_AppMessage.setResult(false);
